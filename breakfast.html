@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Kitchen Canvas </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+       
+
+         <!---Bootstrap----> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  
+        <!---Fonts---->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+        <link rel="stylesheet" href="css/header_all.css">
+       <style>
+        .pack{
+            max-width: 1240px;
+             align-items: center;
+              margin-left: 10%;
+        }
+
+        .card-head{
+                font-size: 40px; 
+                padding-bottom: 20px;
+                
+            }
+            
+.round-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-position 0.5s ease;
+}
+
+
+
+        @media (max-width:590px) {
+            .text{
+                font-size: 15px;
+                text-align: justify;
+                padding-top: 20px; 
+            }
+
+        }
+        @media (max-width:767px) {
+            .text{
+                font-size: 15px;
+                text-align: justify;
+                padding-top: 20px; 
+            }
+            .card-head{
+                font-size: 15px;  
+            }
+        }
+        @media (max-width:991px) {
+            .text{
+                font-size: 15px;
+                text-align: justify;
+                padding-top: 20px; 
+            }
+            .card-head{
+                font-size: 15px;  
+                padding-top: 20px; 
+            }
+        }
+        @media (max-width:1170px) 
+           {
+            .text{
+                font-size: 15px;
+                text-align: justify;
+                padding-top: 20px; 
+            }
+            .card-head{
+                font-size: 30px; 
+                
+            }
+           }
+       </style>
+    
+    
+    
+    
+    </head>
+    <body>
+        <header id="nav_bar">
+            <div class="main">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+                        
+                          <a class="navbar-brand" href="#">
+                                <img src="images/logo.png" alt="LOGO">
+
+                          </a>
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                           
+                            <i class="fas fa-stream navbar-toggler-icon"></i>
+                          </button>
+                          <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav mx-auto">
+                              <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="about">About</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">Meals</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link"  href="#">Seasonal</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link"  href="#">Cuisine</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link"  href="#">Quick</a>
+                              </li>
+                            </ul>
+                            <div class="header_right">
+                                
+                                    <span > <a class="far fa-user" href="login.html"></a> </span>
+                                    
+                                
+                            </div>
+                          </div>
+                        
+                      </nav>
+
+                </div>
+                
+            </div>
+            
+        </header>
+
+        <section class="banner">
+            <div class="container">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                   
+                    <div class="carousel-inner">
+
+                      <div class="carousel-item active">
+                        <div class="carousel-caption">
+                        <h1> Taste Tunes</h1>
+                        
+                        </div>
+                      </div>
+                      
+                     
+                  </div>
+                  </div>
+            </div>
+        </section>
+        <section>
+            
+            <div class="card mb-3 pack">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="images/receipe.jpeg" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body ">
+                  <h5 class="card-title card-head">Card title</h5>
+                  <p class="card-text text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-body-secondary">Average Ratings: 3.5/5</small></p>
+                  <button id="open-modal-button" class="round-button">Click me</button>
+                </div>
+              </div>
+              <div id="modal" class="modal" tabindex="-1">
+                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+          
+          
+          <div class="card mb-3 pack">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="images/receipe.jpeg" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body ">
+                  <h5 class="card-title card-head">Card title</h5>
+                  <p class="card-text text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-body-secondary">Average Ratings: 3.5/5</small></p>
+                  <button id="open-modal-button" class="round-button">Click me</button>
+                </div>
+              </div>
+              <div id="modal" class="modal" tabindex="-1">
+                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+          
+          
+          <div class="card mb-3 pack">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="images/receipe.jpeg" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body ">
+                  <h5 class="card-title card-head">Card title</h5>
+                  <p class="card-text text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-body-secondary">Average Ratings: 3.5/5</small></p>
+                  <button id="open-modal-button" class="round-button">Click me</button>
+                </div>
+              </div>
+              <div id="modal" class="modal" tabindex="-1">
+                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+          
+          
+          <div class="card mb-3 pack">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="images/receipe.jpeg" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body ">
+                  <h5 class="card-title card-head">Card title</h5>
+                  <p class="card-text text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-body-secondary">Average Ratings: 3.5/5</small></p>
+                  <button id="open-modal-button" class="round-button">Click me</button>
+                </div>
+              </div>
+              <div id="modal" class="modal" tabindex="-1">
+                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+          
+          
+
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById("open-modal-button").addEventListener("click", function() {
+      var modal = new bootstrap.Modal(document.getElementById('modal'), {});
+      modal.show();
+    });
+  </script>
+
+            <script src="https://code.jquey.com/jquery-3.6.0.min.js"></script>
+            <script src="js/lightbox.js "></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+
+    </body>
+</html>

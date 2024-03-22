@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 200px;
+            width: 200px;
+            border: 2px black solid;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
+    <link rel="stylesheet" href="css/moderator.css">
+</head>
+<body>
+    <div class="bgrnd-image">
+        <div class="contain">
+            <header>Upload From Here!</header>
+            <div>
+                <label class="label"> Select a category of the recipe:</label>
+                <div class="boxes next"> 
+                    <select class="drpdwn" name="category" id="category" class="form-control" required>
+                        <option value="All">None</option>
+                        <option value="meals">Meals</option>
+                        <option value="quick">Quick</option>
+                        
+                    </select>
+                </div>
+                <div class="next"></div>
+                <label class="label ">Image Name</label>
+                <input type="text" id="namebox" readonly> <label id="extlab"></label><br><br>
+                <img id="myimg"> <label id="upprogress"></label><br><br>
+
+                <!-- New Fields -->
+                <label class="label">Title:</label>
+                <input type="text" id="title">
+                <br><br>
+                <label class="label">Description:</label>
+                <textarea id="description"></textarea>
+                <br><br>
+                <label class="label">Direction:</label>
+                <textarea id="direction"></textarea>
+                <br><br>
+                <label class="label">Ingredients:</label>
+                <textarea id="ingredients"></textarea>
+                <br><br>
+                <label class="label">Calories:</label>
+                <input type="number" id="calories">
+                <br><br>
+
+                <button id="selbtn" class="next imgbtn"> Select Image</button>
+                <button id="upbtn" class="next imgbtn"> Upload Image </button>
+                <button id="downbtn" hidden>Retrieve Image </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC5Ju9f-O9_aq6DdqAmqDJA7i9XqLtRrVA",
+            authDomain: "kitchen-canvas-66c46.firebaseapp.com",
+            projectId: "kitchen-canvas-66c46",
+            storageBucket: "kitchen-canvas-66c46.appspot.com",
+            messagingSenderId: "728341079449",
+            appId: "1:728341079449:web:c2ef84e752c4e65eb45f08",
+            measurementId: "G-CLKQPW6PTH"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const metadata = { contentType: 'image/png' };
+
+        var files = [];
+        var reader = new FileReader();
+        
+        var namebox = document.getElementById('namebox');
+        var extlab = document.getElementById('extlab');
+        var myimg = document.getElementById('myimg');
+        var proglab = document.getElementById('upprogress');
+        var titleInput = document.getElementById('title');
+        var descriptionInput = document.getElementById('description');
+        var directionInput = document.getElementById('direction');
+        var ingredientsInput = document.getElementById('ingredients');
+        var caloriesInput = document.getElementById('calories');
+        var Selbtn = document.getElementById('selbtn');
+        var UpBtn = document.getElementById('upbtn');
+        var DownBtn = document.getElementById('downbtn');
+        var categorySelect = document.getElementById('category');
+
+        var input = document.createElement('input');
+        input.type = 'file';
+        input.style.display = 'none'; // Hide the input element
+        input.onchange = e => {
+            files = e.target.files;
+            var extension = getFileExt(files[0]);
+            var name = getFileName(files[0]);
+
+            namebox.value = name;
+            extlab.innerHTML = extension;
+            reader.readAsDataURL(files[0]);
+        }
+
+        reader.onload = function() {
+            myimg.src = reader.result;
+        }
+
+        Selbtn.onclick = function() {
+            input.click(); // Trigger click on the hidden input element
+        }
+
+        document.body.appendChild(input); // Append the input element to the body
+
+        function getFileExt(file) {
+            var temp = file.name.split('.');
+            var ext = '.' + temp[temp.length - 1];
+            return ext;
+        }
+
+        function getFileName(file) {
+            var temp = file.name.split('.');
+            var fname = temp.slice(0, -1).join('.');
+            return fname;
+        }
+
+        async function UploadProcess() {
+            var ImgToUpload = files[0];
+            var ImgName = namebox.value + extlab.innerHTML;
+            var selectedCategory = categorySelect.value; // Get the selected category here
+
+            const firstWord = getFirstWord(titleInput.value); // Get the first word from the title
+
+            console.log(selectedCategory);
+            const storage = getStorage();
+            const storageRef = sRef(storage, selectedCategory + "/" + ImgName); // Use the selected category in storageRef
+
+            try {
+                const snapshot = await uploadBytesResumable(storageRef, ImgToUpload, metadata);
+
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                proglab.innerHTML = "upload " + progress + "%";
+
+                const downloadURL = await getDownloadURL(snapshot.ref);
+                console.log("File available at", downloadURL);
+
+                // Add data to Firebase Realtime Database
+                const mealData = {
+                    imageFileName: ImgName,
+                    Title: titleInput.value,
+                    Description: descriptionInput.value,
+                    Direction: directionInput.value,
+                    Ingredients: ingredientsInput.value,
+                    Calories: parseInt(caloriesInput.value) || 0
+                };
+
+                await fetch(`https://kitchen-canvas-66c46-default-rtdb.firebaseio.com/meal_list.json`, {
+                    method: 'POST',
+                    body: JSON.stringify(mealData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log('Data uploaded successfully to Firebase Realtime Database.');
+            } catch (error) {
+                console.error("Error uploading image:", error);
+                alert("Error uploading image: " + error.message);
+            }
+        }
+        function getFirstWord(str) {
+    return str.split(' ')[0];
+}
+        UpBtn.onclick = UploadProcess;
+    </script>
+</body>
+</html>
+

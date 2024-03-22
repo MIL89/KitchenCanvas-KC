@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Poppind',sans-serif;
+}
+.bgrnd-image{
+    background: url("../images/mode.jpeg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.bgrnd-image:after{
+position: absolute;
+content: '';
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.2);
+
+}
+.contain{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    text-align: center;
+    padding: 60px 32px;
+    width: 470px;
+    transform: translate(-50%, -50%);
+    background: rgba(18, 17, 17, 0.692);
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+}
+.contain header{
+    color: #fff;
+    font-size: 33px;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+}
+.boxes{
+    position: relative;
+    margin-left: 10%;
+    height: 45px;
+    width: 80%;
+    display: flex;
+    background: rgba(255, 255, 255, 0.9);
+}
+.boxes span{
+    color: #222;
+    width: 40px ;
+    line-height: 45px;
+}
+.boxes input{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #222;
+    font-size: 16px;
+}
+.next{
+    margin-top: 16px;
+}
+.before{
+    margin-bottom: 16px;
+}
+.show{
+    position: absolute;
+    right: 13px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+    display: none;
+    cursor: pointer;
+}
+.pwd-val:valid ~ .show{
+    display: block;
+}
+.pwd{
+    text-align: left;
+    margin: 10px 0;
+}
+.pwd a{
+    color: #000000;
+    text-decoration: none;
+}
+.pwd:hover a{
+    text-decoration: underline;
+}
+
+.boxes button[type="button"]{
+    background: #e89511;
+    height: 45px;
+    width: 100%;
+    border: 1px solid #e89511;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.boxes button[type="button"]:hover{
+    background: #ae6f0b;
+}
+
+
+.imgbtn{
+    background: #ffffff;
+    height: 45px;
+    width: 80%;
+    border: 1px solid #000000;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.imgbtn:hover{
+    background: #09445a;
+}
+
+.boxes .drpdwn{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #222;
+    font-size: 16px;
+}
+.label{
+    color: #fff;
+    text-decoration: none;
+}

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Cards</title>
+    <!---Bootstrap----> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  
+    <!---Fonts---->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <link rel="stylesheet" href="css/header_all.css">
+    <link rel="stylesheet" href="css/star.css">
+    <style>
+      
+        .pack {
+            max-width: 1240px;
+            align-items: center;
+            margin-left: 10%;
+        }
+
+        .card-head {
+            font-size: 40px; 
+            padding-bottom: 20px;
+        }
+        
+        .round-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-position 0.5s ease;
+        }
+                        .card-style .card-title {
+                    font-size: 20px; /* Adjust the font size as needed */
+                    margin-bottom: 10px; /* Add some spacing between the title and the content */
+                    font-weight: bold; /* Make the title bold */
+                }
+
+                .card-style p {
+                    font-size: 16px; /* Adjust the font size for the description */
+                    margin-bottom: 15px; /* Add some spacing between paragraphs */
+                }
+        @media (max-width:590px) {
+            .text {
+                font-size: 15px;
+                text-align: justify;
+                padding-top: 20px; 
+            }
+            .card img {
+            width: 95%;
+            height: 45%;
+            margin-top: 50px;
+        }
+        .card-styles {
+            margin-left: 5%;
+            margin-top: 5%;
+            text-align: justify;
+        }
+        
+        
+        }
+
+        @media (max-width:767px) {
+            .text {
+                font-size: 15px;
+                text-align: justify;
+                padding-top: 20px; 
+            }
+            .card-head {
+                font-size: 15px;  
+            }
+            .card img {
+            width: 95%;
+            height: 45%;
+            margin-top: 50px;
+        }
+        .card-styles {
+            margin-left: 5%;
+            margin-top: 5%;
+            text-align: justify;
+        }
+        
+        
+        }
+
+        @media (max-width:991px) {
+            .text {
+                font-size: 15px;
+                text-align: justify;
+                padding-top: 20px; 
+            }
+            .card-head {
+                font-size: 15px;  
+                padding-top: 20px; 
+            }
+
+            .card img {
+            width: 95%;
+            height: 45%;
+            margin-top: 50px;
+        }
+        .card-styles {
+            margin-left: 5%;
+            margin-top: 5%;
+            text-align: justify;
+        }
+        
+        
+        }
+
+        @media (max-width:1170px) {
+            .text {
+                font-size: 15px;
+                text-align: justify;
+                padding-top: 20px; 
+            }
+            .card-head {
+                font-size: 30px; 
+            }
+            .card img {
+            width: 45%;
+            height: 45%;
+            margin-top: 50px;
+        }
+        .card-styles {
+            margin-left: 5%;
+            margin-top: 5%;
+            text-align: justify;
+        }
+        
+        }
+
+       .ingri-style{
+            margin-left: 65%;
+            margin-top: 5%;
+            font-size: 16px; /* Adjust the font size for the description */
+             margin-bottom: 15px;
+        }
+        /* CSS for card layout */
+        .card {
+            position: relative;
+        }
+        
+        .card img {
+            width: 45%;
+            height: 45%;
+            margin-top: -30%;
+        }
+        
+        .card-content {
+            margin-left: 5%;
+        }
+        
+        .card-style {
+            margin-left: 5%;
+            margin-top: 5%;
+            text-align: justify;
+        }
+
+        /* Calories CSS */
+        .calories {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+        }
+
+        
+        .calories-text{
+            margin-left: 65%;
+           
+            font-size: 16px; /* Adjust the font size for the description */
+           margin-bottom: 15px;
+        }    
+        
+        .ingri-style ul {
+    list-style-type: disc; /* Use disc bullet points */
+    padding-left: 20px; /* Adjust the indentation */
+}
+.container{
+    width: 100%;
+}
+        </style>
+</head>
+<body>
+    <header id="nav_bar">
+        <div class="main">
+            <div class="">
+                <nav class="navbar navbar-expand-lg">
+                    
+                      <a class="navbar-brand" href="#">
+                            <img src="images/logo.png" alt="LOGO">
+                      </a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">                       
+                        <i class="fas fa-stream navbar-toggler-icon"></i>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link active" href="content.html">Meals</a>
+                          </li>
+                          
+                          <li class="nav-item">
+                            <a class="nav-link"  href="#">Quick</a>
+                          </li>
+                        </ul>
+                        <div class="header_right">
+                            
+                                <span > <a class="far fa-user" href="login.html"></a> </span>
+                                
+                            
+                        </div>
+                      </div>
+                    
+                  </nav>
+            </div>   
+        </div>
+    </header>
+
+    <section class="banner_section">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Taste Tune</h2>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="card-container" id="card-container"></div>
+        <div class="rating-container">
+            <h4>Rate Us</h4>
+            <div class="stars">
+              <span class="star" data-rating="5">★</span>
+              <span class="star" data-rating="4">★</span>
+              <span class="star" data-rating="3">★</span>
+              <span class="star" data-rating="2">★</span>
+              <span class="star" data-rating="1">★</span>
+            </div>
+            <button id="submit-btn" hidden>Submit</button>
+          </div>
+      
+          <!-- The Modal -->
+          <div id="modal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Submit Your Rating</h2>
+              <form id="rating-form">
+                <input type="hidden" id="rating" name="rating">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="comments">Comments:</label><br>
+                <textarea id="comments" name="comments"></textarea><br>
+                <input type="submit" value="Submit">
+              </form>
+            </div>
+          </div>
+       <!-- Display Ratings -->
+       <div id="ratings-display">
+        <h2>Reviews</h2>
+        <div id="average-rating"></div>
+        <div id="user-ratings"></div>
+      </div>
+          <br>
+    </div>
+
+    <!-- Footer section Start-->
+    <section class="footer_wrapper mt-3 mt-md-0">
+        <div class="container px-5 px-lg-0">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0">
+                    <h5>Kitchen Canvas</h5>
+                    <p class="mb-4 ps-0 company_details">"Eating healthy is not just a habit, it's an investment in your future well-being."</p>
+                    <div class="contact-info">
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="fa fa-home me-3"></i> 8 Forest Grove, Treforest, Pontypridd, CF37 1DL</a></li>
+                            <li><a href="#"><i class="fa fa-phone me-3"></i>+ 034 55 76 01 01</a></li>
+                            <li><a href="#"><i class="fa fa-envelope me-3"></i>info@example.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0">
+                    <h5></h5>
+                    
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul class="link-widget p-0">
+                        <li><a href="#">Meals</a></li>
+                        <li><a href="#">Quick</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0">
+                    <h5>Newsletter</h5>
+                    <div class="form-group mb-4">
+                        <input type="email" class="form-control bg-transparent" placeholder="Enter Your Email Here">
+                        <button type="submit" class="btn main-btn">Subscribe</button>
+                    </div>
+                    <h5>Stay Connected</h5>
+                    <ul class="social-network d-flex align-items-center p-0">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid copyright-section">
+            <p><a href="#"></a> All Rights Reserved</p>
+        </div>
+    </section>
+    <!-- Footer Section Exit  -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+        import { getStorage, ref as sRef, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
+        import { getDatabase, ref , push, set, serverTimestamp, query, orderByChild, equalTo, onValue, get } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+       
+        import { getAuth } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+      
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC5Ju9f-O9_aq6DdqAmqDJA7i9XqLtRrVA",
+            authDomain: "kitchen-canvas-66c46.firebaseapp.com",
+            databaseURL: "https://kitchen-canvas-66c46-default-rtdb.firebaseio.com",
+            projectId: "kitchen-canvas-66c46",
+            storageBucket: "kitchen-canvas-66c46.appspot.com",
+            messagingSenderId: "728341079449",
+            appId: "1:728341079449:web:c2ef84e752c4e65eb45f08",
+            measurementId: "G-CLKQPW6PTH"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Reference to Firebase Storage
+        const storage = getStorage();
+
+        // Function to fetch data from Firebase and display in cards
+        function fetchAndDisplayDataForKey(key) {
+            var cardContainer = document.getElementById('card-container');
+            cardContainer.innerHTML = ''; // Clear previous content
+
+            // Make a GET request to fetch data for the specified key from Firebase Realtime Database
+            fetch(`https://kitchen-canvas-66c46-default-rtdb.firebaseio.com/meal_list/${key}.json`)
+                .then(response => response.json())
+                .then(meal => {
+                    // Ensure meal object has required properties
+                    if (meal.imageFileName && meal.Title && meal.Description && meal.Ingredients && meal.Calories) {
+                        // Create card element
+                        var card = document.createElement('div');
+                        card.className = 'card';
+
+                        // Fetch image from Firebase Storage
+                        var storageRef = sRef(storage, 'meals/' + meal.imageFileName);
+                        getDownloadURL(storageRef).then(function(url) {
+                            // Create image element
+                            var img = document.createElement('img');
+                            img.src = url;
+                            card.appendChild(img);
+                        }).catch(function(error) {
+                            console.error('Error fetching image:', error);
+                        });
+
+                        // Create title element
+                        var titleDiv = document.createElement('div');
+                        titleDiv.className = 'card-content';
+                        var title = document.createElement('h1');
+                        title.textContent = meal.Title;
+                        titleDiv.appendChild(title);
+                        card.appendChild(titleDiv);
+
+                        // Create description element
+                        var descriptionDiv = document.createElement('div');
+                        descriptionDiv.className = 'card-style';
+
+                        
+                        var description = document.createElement('p');
+                        description.textContent = meal.Description;
+                        descriptionDiv.appendChild(description);
+                        card.appendChild(descriptionDiv);
+
+
+
+                        
+                            
+                        // Create direction element and append it to card
+                        var directionDiv = document.createElement('div');
+                        directionDiv.className = 'card-style';
+
+                        // Create title for directions
+                        var directionTitle = document.createElement('p');
+                            directionTitle.className = 'card-title';
+                            directionTitle.textContent = 'Directions:';
+                            directionTitle.style.fontWeight = 'bold'; 
+                            directionDiv.appendChild(directionTitle);
+                        
+
+                        var direction = document.createElement('p');
+                        direction.textContent = meal.Direction || 'Directions not available';
+                        directionDiv.appendChild(direction);
+                        card.appendChild(directionDiv);
+
+                        var ingredientsDiv = document.createElement('div');
+                        ingredientsDiv.className = 'ingri-style';
+                        var ingredients = document.createElement('p');
+                        ingredients.textContent = 'Ingredients:';
+                        ingredients.style.fontWeight = 'bold'; 
+                        ingredientsDiv.appendChild(ingredients);
+
+                        
+                        var ingredientsList = meal.Ingredients.split(',');
+                        var ul = document.createElement('ul');
+
+                        // Create separate <p> elements for each ingredient
+                        ingredientsList.forEach(ingredient => {
+                            var li = document.createElement('li');
+                            li.textContent = ingredient.trim(); // Trim to remove extra spaces
+                            ul.appendChild(li);
+                        });
+
+                        ingredientsDiv.appendChild(ul);
+                        card.appendChild(ingredientsDiv);
+
+                       
+                        var caloriesDiv = document.createElement('div');
+                        caloriesDiv.className = 'calories-text';
+
+                        var CaloriesTitle = document.createElement('p');
+                            CaloriesTitle.className = 'calories-title';
+                            CaloriesTitle.textContent = 'Calories:';
+                            CaloriesTitle.style.fontWeight = 'bold'; 
+                            caloriesDiv.appendChild(CaloriesTitle);
+
+                        var calories = document.createElement('p');
+                        calories.textContent = meal.Calories || 'Calories not available';
+                        caloriesDiv.appendChild(calories);
+                        card.appendChild(caloriesDiv);
+
+                        // Append card to container
+                        cardContainer.appendChild(card);
+                    } else {
+                        console.error('Required properties are missing for meal:', meal);
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Extracting key from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const key = urlParams.get('id');
+
+        // Call function to fetch and display data for the specified key
+        if (key) {
+            fetchAndDisplayDataForKey(key);
+        } else {
+            console.error('No key found in URL parameters.');
+        }
+
+
+
+
+
+
+        
+      const stars = document.querySelectorAll('.star');
+      const submitBtn = document.getElementById('submit-btn');
+      const modal = document.getElementById('modal');
+      const closeBtn = document.querySelector('.close');
+      const ratingForm = document.getElementById('rating-form');
+
+      let currentRating = null;
+      const db = getDatabase();
+
+
+
+// Reference to the ratings node under the meal_list key
+const ratingsRef = ref(db, `meal_list/${key}/ratings`);
+
+// Define variables for calculating the average rating
+let totalRating = 0;
+let totalUsers = 0;
+      stars.forEach((star) => {
+        star.addEventListener('click', () => {
+          currentRating = star.dataset.rating;
+          stars.forEach((otherStar) => {
+            otherStar.classList.remove('active');
+            if (otherStar.dataset.rating <= currentRating) {
+              otherStar.classList.add('active');
+            }
+          });
+          submitBtn.hidden = false;
+        });
+      });
+
+      submitBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        document.getElementById('rating').value = currentRating;
+      });
+
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      ratingForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const rating = document.getElementById('rating').value;
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const comments = document.getElementById('comments').value;
+
+        try {
+          // Check if email has already submitted a rating
+          const db = getDatabase();
+          const urlParams = new URLSearchParams(window.location.search);
+          const key = urlParams.get('id');
+          const ratingsRef = ref(db, `meal_list/${key}/ratings`);
+          const snapshot = await get(ratingsRef);
+          let alreadySubmitted = false;
+
+          snapshot.forEach((childSnapshot) => {
+            const childData = childSnapshot.val();
+            if (childData.email === email) {
+              alreadySubmitted = true;
+            }
+          });
+
+          if (alreadySubmitted) {
+            // Show alert message and reset form
+            alert('Review already submitted from this email!');
+            ratingForm.reset();
+            modal.style.display = 'none';
+            return;
+          }
+
+          // Get user location (GPS)
+          const position = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          });
+
+          const location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+
+          // Store data in Firebase Realtime Database
+          const newRatingRef = push(ratingsRef);
+          await set(newRatingRef, {
+            rating,
+            username,
+            email,
+            comments,
+            location,
+            timestamp: serverTimestamp(),
+          });
+
+          // Reset form and close modal
+          ratingForm.reset();
+          modal.style.display = 'none';
+          alert('Review submitted successfully!');
+          window.location.href = 'details.html?id=' + key;
+        } catch (error) {
+          console.error('Error submitting rating:', error);
+          // Handle error here, e.g., display an error message to the user
+        }
+      });
+
+
+      function updateAverageRating() {
+    // Calculate average rating
+    const averageRating = totalUsers > 0 ? (totalRating / totalUsers).toFixed(2) : 0;
+
+    // Display average rating
+    document.getElementById('average-rating').innerHTML = `<strong>Average Rating:</strong> ${averageRating}`;
+  }
+
+  // Function to display the user ratings
+  function displayUserRatings(snapshot) {
+    let userRatingsHTML = '';
+
+    snapshot.forEach((childSnapshot) => {
+      const ratingData = childSnapshot.val();
+      const rating = ratingData.rating;
+      const username = ratingData.username;
+      const comments = ratingData.comments;
+
+      totalRating += parseInt(rating);
+      totalUsers++;
+
+      // Display rating as yellow stars
+      const yellowStars = '★'.repeat(parseInt(rating)) + '☆'.repeat(5 - parseInt(rating));
+
+      // Add user rating to HTML
+      userRatingsHTML += `<div><strong>${username}</strong>: ${yellowStars}<br>${comments}</div>`;
+    });
+
+    // Display user ratings
+    document.getElementById('user-ratings').innerHTML = userRatingsHTML;
+
+    // Update the average rating display
+    updateAverageRating();
+  }
+
+  // Retrieve ratings and listen for changes
+  onValue(ratingsRef, (snapshot) => {
+    // Reset total rating and total users
+    totalRating = 0;
+    totalUsers = 0;
+
+    // Display user ratings and update average rating
+    displayUserRatings(snapshot);
+  });
+
+    </script>
+
+</body>
+</html>
+
